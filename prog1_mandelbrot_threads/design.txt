@@ -1,0 +1,3 @@
+The parallel multi-threaded solution uses a lock and a global row number variable.
+
+The thread has to acquire a lock and then read the row number variable for the next processed row.

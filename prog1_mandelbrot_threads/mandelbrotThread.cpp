@@ -1,19 +1,24 @@
 #include <stdio.h>
 #include <thread>
+#include <stdlib.h>
+#include <mutex>
+#include <algorithm>
 
-#include "CycleTimer.h"
+#include "../common/CycleTimer.h"
+
+std::mutex mtx;
+unsigned int row_number;
 
 typedef struct {
     float x0, x1;
     float y0, y1;
     unsigned int width;
     unsigned int height;
-    int maxIterations;
+    int maxIterations;  
     int* output;
     int threadId;
     int numThreads;
 } WorkerArgs;
-
 
 extern void mandelbrotSerial(
     float x0, float y0, float x1, float y1,
@@ -35,7 +40,27 @@ void workerThreadStart(WorkerArgs * const args) {
     // program that uses two threads, thread 0 could compute the top
     // half of the image and thread 1 could compute the bottom half.
 
-    printf("Hello world from thread %d\n", args->threadId);
+    // unsigned int bundel_size = 1;
+    double startTime = CycleTimer::currentSeconds();
+
+    while(1) {
+        int row = -1;
+        {
+            std::lock_guard<std::mutex> lg(mtx);
+            if(row_number >= args->height) break;
+            row = row_number;
+            row_number += 1;
+        }
+        mandelbrotSerial(args->x0, args->y0, args->x1, args->y1, 
+            args->width, args->height, row, 1,
+            args->maxIterations, args->output);
+    }
+
+    double endTime = CycleTimer::currentSeconds();
+
+    printf("Thread-%d :: %fs\n", args->threadId, endTime-startTime);
+
+    // printf("Hello world from thread %d\n", args->threadId);
 }
 
 //
@@ -58,7 +83,7 @@ void mandelbrotThread(
     }
 
     // Creates thread objects that do not yet represent a thread.
-    std::thread workers[MAX_THREADS];
+    static std::thread workers[MAX_THREADS];
     WorkerArgs args[MAX_THREADS];
 
     for (int i=0; i<numThreads; i++) {
@@ -78,6 +103,8 @@ void mandelbrotThread(
       
         args[i].threadId = i;
     }
+
+    row_number = 0;
 
     // Spawn the worker threads.  Note that only numThreads-1 std::threads
     // are created and the main application thread is used as a worker

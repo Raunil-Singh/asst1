@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <algorithm>
 #include <getopt.h>
+#include <string.h>
 
-#include "CycleTimer.h"
+#include "../common/CycleTimer.h"
 
 extern void mandelbrotSerial(
     float x0, float y0, float x1, float y1,
