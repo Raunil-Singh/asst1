@@ -1,0 +1,100 @@
+Main Task
+
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ ./myexp -s 1000000
+CLAMPED EXPONENT (required) 
+Results matched with answer!
+****************** Printing Vector Unit Statistics *******************
+Vector Width:              2
+Total Vector Instructions: 25540074
+Vector Utilization:        82.4%
+Utilized Vector Lanes:     42069314
+Total Vector Lanes:        51080148
+************************ Result Verification *************************
+Passed!!!
+
+ARRAY SUM (bonus) 
+Expected 1000143.687500, got 0.000000
+.@@@ Failed!!!
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ make clean
+rm -f *.o myexp *~
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ make
+g++ -c CS149intrin.cpp
+g++ -c logger.cpp
+g++ -I../common logger.o CS149intrin.o main.cpp -o myexp
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ ./myexp -s 1000000
+CLAMPED EXPONENT (required) 
+Results matched with answer!
+****************** Printing Vector Unit Statistics *******************
+Vector Width:              3
+Total Vector Instructions: 18949361
+Vector Utilization:        76.9%
+Utilized Vector Lanes:     43717295
+Total Vector Lanes:        56848083
+************************ Result Verification *************************
+Passed!!!
+
+ARRAY SUM (bonus) 
+Must have N % VECTOR_WIDTH == 0 for this problem (VECTOR_WIDTH is 3)
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ make clean
+rm -f *.o myexp *~
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ make
+g++ -c CS149intrin.cpp
+g++ -c logger.cpp
+g++ -I../common logger.o CS149intrin.o main.cpp -o myexp
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ ./myexp -s 1000000
+CLAMPED EXPONENT (required) 
+Results matched with answer!
+****************** Printing Vector Unit Statistics *******************
+Vector Width:              4
+Total Vector Instructions: 15074106
+Vector Utilization:        74.1%
+Utilized Vector Lanes:     44702540
+Total Vector Lanes:        60296424
+************************ Result Verification *************************
+Passed!!!
+
+ARRAY SUM (bonus) 
+Expected 1000143.687500, got 0.000000
+.@@@ Failed!!!
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ make clean
+rm -f *.o myexp *~
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ make
+g++ -c CS149intrin.cpp
+g++ -c logger.cpp
+g++ -I../common logger.o CS149intrin.o main.cpp -o myexp
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ ./myexp -s 1000000
+CLAMPED EXPONENT (required) 
+Results matched with answer!
+****************** Printing Vector Unit Statistics *******************
+Vector Width:              8
+Total Vector Instructions: 8285596
+Vector Utilization:        70.0%
+Utilized Vector Lanes:     46413504
+Total Vector Lanes:        66284768
+************************ Result Verification *************************
+Passed!!!
+
+ARRAY SUM (bonus) 
+Expected 1000143.687500, got 0.000000
+.@@@ Failed!!!
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ make clean
+rm -f *.o myexp *~
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ make
+g++ -c CS149intrin.cpp
+g++ -c logger.cpp
+g++ -I../common logger.o CS149intrin.o main.cpp -o myexp
+raunil-singh@phoenix:~/Github_repos/CS149/asst1/prog2_vecintrin$ ./myexp -s 1000000
+CLAMPED EXPONENT (required) 
+Results matched with answer!
+****************** Printing Vector Unit Statistics *******************
+Vector Width:              16
+Total Vector Instructions: 4342429
+Vector Utilization:        68.1%
+Utilized Vector Lanes:     47326120
+Total Vector Lanes:        69478864
+************************ Result Verification *************************
+Passed!!!
+
+ARRAY SUM (bonus) 
+Expected 1000143.687500, got 0.000000
+.@@@ Failed!!!
